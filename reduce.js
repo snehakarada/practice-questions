@@ -20,10 +20,9 @@ const averageOf = function (numbers) {
 
 // minOf([3, 1, 4, 1, 5, 9, 2]) => 1
 const minOf = function (numbers) {
-  const minimum = maxOf(numbers);
   return numbers.reduce(function (minimumValue, element) {
     return element < minimumValue ? element : minimumValue;
-  }, minimum);
+  }, Infinity);
 };
 
 // maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
@@ -120,29 +119,56 @@ const joinWithComma = function (words) {
 
 // reverseWords(["hello", "world"]) => "world hello"
 const reverseWords = function (words) {
-
+  return words.reduce(function (concatedStr, word) {
+    return word + ' ' + concatedStr;
+  }, '').trim();
 };
 
 // joinWordsWithSpace(["apple", "banana", "cherry"]) => "apple banana cherry"
-const joinWordsWithSpace = function (words) { };
+const joinWordsWithSpace = function (words) {
+  return words.reduce(function (concatedStr, word) {
+    return concatedStr + word + ' ';
+  }, '').trim();
+};
 
 // concatenateNames(["John", "Jane", "Doe"]) => "JohnJaneDoe"
-const concatenateNames = function (names) { };
+const concatenateNames = function (names) {
+  return names.reduce(function (concatedName, word) {
+    return concatedName + word;
+  }, '');
+};
 
 // countVowelsInWords(["hello", "world"]) => "eoo"
-const countVowelsInWords = function (words) { };
+const countVowelsInWords = function (words) {
+
+};
 
 // makeCamelCase(["hello", "world", "how", "are", "you"]) => "helloWorldHowAreYou"
-const makeCamelCase = function (words) { };
+const makeCamelCase = function (words) {
+
+};
 
 // reverseString(["apple", "banana", "cherry"]) => "elppaananabyrrehc"
-const reverseString = function (words) { };
+const reverseString = function (words) {
+  const reversedStrings = words.map(function (word) {
+    return [...word].reverse().join('');
+  });
+
+  return concatenateNames(reversedStrings);
+};
 
 // duplicateNumbers([1, 2, 3]) => [1, 1, 2, 2, 3, 3]
-const duplicateNumbers = function (numbers) { };
+const duplicateNumbers = function (numbers) {
+  return numbers.reduce(function (duplicatedArr, element) {
+    duplicatedArr.push(element, element);
+
+    return duplicatedArr;
+  }, []);
+};
 
 // concatenateArrays([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
-const concatenateArrays = function (arrays) { };
+const concatenateArrays = function (arrays) {
+};
 
 // flattenArray([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
 const flattenArray = function (arrays) { };
@@ -241,7 +267,8 @@ const cartesianProduct = function (arr1, arr2) { };
 const groupByDate = function (records) { };
 
 // findMinMax([1, 2, 3, 4, 5]) => { min: 1, max: 5 }
-const findMinMax = function (numbers) { };
+const findMinMax = function (numbers) {
+};
 
 // sumByCategory([{ category: 'A', value: 10 }, { category: 'B', value: 20 }, { category: 'A', value: 30 }]) => { A: 40, B: 20 }
 const sumByCategory = function (items) { };
