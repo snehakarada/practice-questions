@@ -62,16 +62,38 @@ const filterInStockProducts = function (products) {
 };
 
 // orders placed in the last 30 days [{orderDate: "2024-11-01"}, {orderDate: "2024-12-01"}] => [{orderDate: "2024-12-01"}]
-const filterRecentOrders = function (orders) { };
+const filterRecentOrders = function (orders) {
+};
 
 // products with a price lower than the average [{name: "item1", price: 10}, {name: "item2", price: 20}, {name: "item3", price: 5}] => [{name: "item1", price: 10}, {name: "item3", price: 5}]
-const filterBelowAveragePrice = function (products) { };
+const getSumOfProductPrice = function (sum, product) {
+  return sum + product.price;
+};
+
+const filterBelowAveragePrice = function (products) {
+  const sum = products.reduce(getSumOfProductPrice, 0);
+  const average = sum / products.length;
+
+  return products.filter(function (productDetails) {
+    return productDetails.price < average;
+  });
+};
 
 // active users who posted in the last 7 days [{username: "alice", lastPostDate: "2024-12-01", active: true}, {username: "bob", lastPostDate: "2024-11-20", active: true}] => [{username: "alice", lastPostDate: "2024-12-01", active: true}]
-const filterRecentActiveUsers = function (users) { };
+const filterRecentActiveUsers = function (users) {
+
+};
 
 // students who passed all subjects [{name: "John", subjects: [{name: "Math", passed: true}, {name: "Science", passed: true}]}, {name: "Jane", subjects: [{name: "Math", passed: false}, {name: "Science", passed: true}]}] => [{name: "John", subjects: [{name: "Math", passed: true}, {name: "Science", passed: true}]}]
-const filterStudentsWithAllSubjectsPassed = function (students) { };
+const filterPassedSubjects = function (subjects) {
+  return subjects.passed;
+};
+
+const filterStudentsWithAllSubjectsPassed = function (students) {
+  return students.filter(function (student) {
+    return student.subjects.every(filterPassedSubjects);
+  });
+};
 
 // people whose birthday is this month [{name: "Alice", birthDate: "2024-12-01"}, {name: "Bob", birthDate: "2024-11-01"}] => [{name: "Alice", birthDate: "2024-12-01"}]
 const filterBirthdaysThisMonth = function (people) { };
