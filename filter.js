@@ -66,12 +66,16 @@ const filterRecentOrders = function (orders) {
 };
 
 // products with a price lower than the average [{name: "item1", price: 10}, {name: "item2", price: 20}, {name: "item3", price: 5}] => [{name: "item1", price: 10}, {name: "item3", price: 5}]
-const getSumOfProductPrice = function (sum, product) {
-  return sum + product.price;
+const sumOfArrayElements = function (sum, element) {
+  return sum + element;
+};
+
+const getPrices = function (itemDetails) {
+  return itemDetails.price;
 };
 
 const filterBelowAveragePrice = function (products) {
-  const sum = products.reduce(getSumOfProductPrice, 0);
+  const sum = products.map(getPrices).reduce(sumOfArrayElements, 0);
   const average = sum / products.length;
 
   return products.filter(function (productDetails) {
@@ -96,16 +100,41 @@ const filterStudentsWithAllSubjectsPassed = function (students) {
 };
 
 // people whose birthday is this month [{name: "Alice", birthDate: "2024-12-01"}, {name: "Bob", birthDate: "2024-11-01"}] => [{name: "Alice", birthDate: "2024-12-01"}]
-const filterBirthdaysThisMonth = function (people) { };
+const filterBirthdaysThisMonth = function (people) {
+
+};
 
 // orders that exceed the average order value [{orderId: 1, amount: 20}, {orderId: 2, amount: 50}, {orderId: 3, amount: 10}] => [{orderId: 2, amount: 50}]
-const filterHighValueOrders = function (orders) { };
+const getAmount = function (orderDetails) {
+  return orderDetails.amount;
+};
+
+const filterHighValueOrders = function (orders) {
+  const sum = orders.map(getAmount).reduce(sumOfArrayElements, 0);
+  const average = sum / orders.length;
+
+  return orders.filter(function (orderDetails) {
+    return orderDetails.amount > average;
+  });
+};
 
 // books with reviews higher than the average rating [{title: "Book 1", rating: 4}, {title: "Book 2", rating: 5}, {title: "Book 3", rating: 3}] => [{title: "Book 2", rating: 5}]
-const filterTopRatedBooks = function (books) { };
+const getRatings = function (booksDetails) {
+  return booksDetails.rating;
+};
+
+const filterTopRatedBooks = function (books) {
+  const sum = books.map(getRatings).reduce(sumOfArrayElements, 0);
+  const average = sum / books.length;
+
+  return books.filter(function (booksDetails) {
+    return booksDetails.rating > average;
+  });
+};
 
 // employees whose salary is higher than the department average [{name: "Alice", salary: 5000, department: "HR"}, {name: "Bob", salary: 7000, department: "HR"}, {name: "Charlie", salary: 4000, department: "IT"}] => [{name: "Bob", salary: 7000, department: "HR"}]
-const filterHighSalaryEmployees = function (employees) { };
+const filterHighSalaryEmployees = function (employees) {
+};
 
 // cities with a population higher than the median [{name: "City A", population: 2000}, {name: "City B", population: 5000}, {name: "City C", population: 3000}] => [{name: "City B", population: 5000}]
 const filterCitiesAboveMedianPopulation = function (cities) { };
