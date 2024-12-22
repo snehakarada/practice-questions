@@ -55,7 +55,11 @@ const filterHighGrades = function (students) {
 };
 
 // products that are in stock [{product: "apple", inStock: true}, {product: "banana", inStock: false}] => [{product: "apple", inStock: true}]
-const filterInStockProducts = function (products) { };
+const filterInStockProducts = function (products) {
+  return products.filter(function (productDetails) {
+    return productDetails.inStock;
+  });
+};
 
 // orders placed in the last 30 days [{orderDate: "2024-11-01"}, {orderDate: "2024-12-01"}] => [{orderDate: "2024-12-01"}]
 const filterRecentOrders = function (orders) { };
