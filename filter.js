@@ -6,16 +6,26 @@ const filterEvenNumbers = function (numbers) {
 };
 
 // words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
+const isGreater = function (number2) {
+  return function (number1) {
+    return number1 > number2;
+  };
+};
+
 const filterLongWords = function (words) {
+  const isGreaterThan5 = isGreater(5);
+
   return words.filter(function (element) {
-    return element > 5;
+    return isGreaterThan5(element.length);
   });
 };
 
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
 const filterAdults = function (people) {
+  const isGreaterThan30 = isGreater(30);
+
   return people.filter(function (person) {
-    return person.age > 30;
+    return isGreaterThan30(person.age);
   });
 };
 
@@ -35,8 +45,10 @@ const filterNumbersGreaterThanTen = function (numbers) {
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
 const filterLongBooks = function (books) {
+  const isGreaterThan200 = isGreater(200);
+
   return books.filter(function (book) {
-    return book.pages > 200;
+    return isGreaterThan200(book.pages);
   });
 };
 
@@ -49,8 +61,10 @@ const filterIncompleteProfiles = function (users) {
 
 // students with grades above 80 [{name: "John", grade: 75}, {name: "Jane", grade: 85}] => [{name: "Jane", grade: 85}]
 const filterHighGrades = function (students) {
+  const isGreaterThan80 = isGreater(80);
+
   return students.filter(function (person) {
-    return person.grade > 80;
+    return isGreaterThan80(person.grade);
   });
 };
 

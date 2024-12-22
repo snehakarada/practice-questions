@@ -37,18 +37,16 @@ const truthValuesOf = function (numbers) {
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
 const reversedStringsOf = function (strings) {
   return strings.map(function (element) {
-    return element.split('').reverse().join('');
+    return [...element].reverse().join('');
   });
 };
 
 // double letters of ["cat", "dog", "bat"] => ["ccaatt", "ddoogg", "bbaatt"]
-const getDoubleLetters = function (string) {
-  return string + string;
-};
-
 const doubleLettersOf = function (strings) {
   return strings.map(function (element) {
-    return element.split('').map(getDoubleLetters).join('');
+    return [...element].map(function (char) {
+      return char.repeat(2);
+    }).join('');
   });
 };
 
@@ -71,6 +69,7 @@ const charCodesOf = function (strings) {
 const domainNamesOf = function (emails) {
   return emails.map(function (element) {
     const start = element.indexOf('@');
+
     return element.slice(start, element.length);
   });
 };
@@ -92,22 +91,22 @@ const joinedArraysOf = function (arrayOfArrays) {
 // repeat strings in ["hi", "bye"] => ["hihi", "byebye"]
 const repeatedStringsOf = function (strings) {
   return strings.map(function (string) {
-    return string + string;
+    return string.repeat(2);
   });
 };
 
 // count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
-const getVowelCount = function (accumulator, element) {
+const getVowelCount = function (counter, element) {
   if ('aeiouAEIOU'.includes(element)) {
-    return accumulator + 1;
+    return counter + 1;
   }
 
-  return accumulator;
+  return counter;
 };
 
 const countVowelsOf = function (strings) {
   return strings.map(function (element) {
-    return element.split('').reduce(getVowelCount, 0);
+    return [...element].reduce(getVowelCount, 0);
   });
 };
 
