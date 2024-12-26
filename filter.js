@@ -89,8 +89,7 @@ const getPrices = function (itemDetails) {
 };
 
 const filterBelowAveragePrice = function (products) {
-  const sum = products.map(getPrices).reduce(sumOfArrayElements, 0);
-  const average = sum / products.length;
+  const average = products.map(getPrices).reduce(sumOfArrayElements, 0) / products.length;
 
   return products.filter(function (productDetails) {
     return productDetails.price < average;
@@ -99,7 +98,7 @@ const filterBelowAveragePrice = function (products) {
 
 // active users who posted in the last 7 days [{username: "alice", lastPostDate: "2024-12-01", active: true}, {username: "bob", lastPostDate: "2024-11-20", active: true}] => [{username: "alice", lastPostDate: "2024-12-01", active: true}]
 const filterRecentActiveUsers = function (users) {
-
+  return users.filter(user => user.active);
 };
 
 // students who passed all subjects [{name: "John", subjects: [{name: "Math", passed: true}, {name: "Science", passed: true}]}, {name: "Jane", subjects: [{name: "Math", passed: false}, {name: "Science", passed: true}]}] => [{name: "John", subjects: [{name: "Math", passed: true}, {name: "Science", passed: true}]}]
@@ -148,49 +147,84 @@ const filterTopRatedBooks = function (books) {
 
 // employees whose salary is higher than the department average [{name: "Alice", salary: 5000, department: "HR"}, {name: "Bob", salary: 7000, department: "HR"}, {name: "Charlie", salary: 4000, department: "IT"}] => [{name: "Bob", salary: 7000, department: "HR"}]
 const filterHighSalaryEmployees = function (employees) {
+
 };
 
 // cities with a population higher than the median [{name: "City A", population: 2000}, {name: "City B", population: 5000}, {name: "City C", population: 3000}] => [{name: "City B", population: 5000}]
 const filterCitiesAboveMedianPopulation = function (cities) { };
 
 // posts with more than the average number of likes [{postId: 1, likes: 100}, {postId: 2, likes: 200}, {postId: 3, likes: 150}] => [{postId: 2, likes: 200}]
-const filterPopularPosts = function (posts) { };
+const filterPopularPosts = function (posts) {
+  const average = posts.reduce(function (sum, post) {
+    return sum + post.likes;
+  }, 0) / posts.length;
+
+  return posts.filter(post => post.likes > average);
+};
+
 
 // users who have posted more than the average number of posts [{username: "Alice", postCount: 5}, {username: "Bob", postCount: 8}, {username: "Charlie", postCount: 3}] => [{username: "Bob", postCount: 8}]
-const filterActiveUsersByPostCount = function (users) { };
+const filterActiveUsersByPostCount = function (users) {
+  const average = users.reduce(((sum, user) => sum + user.postCount), 0) / users.length;
+
+  return users.filter(user => user.postCount > average);
+};
 
 // filter people older than a certain age [{name: "Alice", age: 25}, {name: "Bob", age: 30}, {name: "Charlie", age: 22}] => [{name: "Bob", age: 30}]
-const filterByAge = function (people, age) { };
+const filterByAge = function (people, age) {
+  return people.filter(person => person.age > age);
+};
 
 // filter products that are cheaper than a given price [{name: "item1", price: 20}, {name: "item2", price: 50}, {name: "item3", price: 10}] => [{name: "item1", price: 20}, {name: "item3", price: 10}]
-const filterByPrice = function (products, price) { };
+const filterByPrice = function (products, price) {
+  return products.filter(product => product.price < price);
+};
 
 // filter students who scored above a certain grade in Math [{name: "John", grades: {math: 80, science: 90}}, {name: "Jane", grades: {math: 70, science: 85}}] => [{name: "John", grades: {math: 80, science: 90}}]
-const filterByMathGrade = function (students, grade) { };
+const filterByMathGrade = function (students, grade) {
+  return students.filter(({ grades }) => grades.math > grade);
+};
 
 // filter events that occur before a certain date [{name: "Event1", date: "2024-12-01"}, {name: "Event2", date: "2024-11-15"}] => [{name: "Event2", date: "2024-11-15"}]
-const filterByDate = function (events, date) { };
+const filterByDate = function (events, date) {
+
+};
 
 // filter employees who earn more than a certain salary [{name: "Alice", salary: 5000}, {name: "Bob", salary: 7000}] => [{name: "Bob", salary: 7000}]
-const filterBySalary = function (employees, salary) { };
+const filterBySalary = function (employees, salary) {
+  return employees.filter(employee => employee.salary > salary);
+};
 
 // filter orders with a quantity greater than a given number [{orderId: 1, quantity: 10}, {orderId: 2, quantity: 5}] => [{orderId: 1, quantity: 10}]
-const filterByQuantity = function (orders, quantity) { };
+const filterByQuantity = function (orders, quantity) {
+  return orders.filter(order => order.quantity > quantity);
+};
 
 // filter books published after a certain year [{title: "Book1", year: 2020}, {title: "Book2", year: 2022}] => [{title: "Book2", year: 2022}]
-const filterByYear = function (books, year) { };
+const filterByYear = function (books, year) {
+  return books.filter(book => book.year > year);
+};
 
 // filter students with a grade higher than a given threshold in a specific subject [{name: "Alice", grades: {math: 90, science: 80}}, {name: "Bob", grades: {math: 70, science: 85}}] => [{name: "Alice", grades: {math: 90, science: 80}}]
-const filterBySubjectGrade = function (students, subject, threshold) { };
+const filterBySubjectGrade = function (students, subject, threshold) {
+  return students.filter(({ grades }) => grades[subject] > threshold);
+};
 
 // filter photos with a minimum number of likes [{id: 1, likes: 100}, {id: 2, likes: 50}] => [{id: 1, likes: 100}]
 const filterByLikes = function (photos, likes) { };
 
 // filter users who have made a certain number of posts [{username: "Alice", posts: 10}, {username: "Bob", posts: 5}] => [{username: "Alice", posts: 10}]
-const filterByPostCount = function (users, postCount) { };
+const filterByPostCount = function (users, postCount) {
+  return users.filter(({ posts }) => posts === postCount);
+};
 
 // Apply a discount to each item's price, then filter for items under a certain price [{name: "item1", price: 100}, {name: "item2", price: 50}] => [{name: "item2", price: 45}]
-const filterDiscountedItems = function (items, discount, maxPrice) { };
+const filterDiscountedItems = function (items, discount, maxPrice) {
+  const priceAfterDiscount = items.map(({ name, price }) => (price - (price * discount / 100)));
+  console.log(priceAfterDiscount);
+};
+
+console.log(filterDiscountedItems([{ name: "item1", price: 100 }, { name: "item2", price: 50 }], 5, 20));
 
 // Convert product names to uppercase, then filter for products with names longer than a certain number [{name: "apple"}, {name: "banana"}] => [{name: "APPLE"}]
 const filterLongProductNames = function (products, minLength) { };

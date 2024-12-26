@@ -85,6 +85,8 @@ const findSumOfEvenSquares = function (numbers) {
   return sumOf(evenSquares);
 };
 
+// --------------* 10 programs till now *--------------------
+
 // concatenateWords(["hello", "world"]) => "helloworld"
 const concatenateWords = function (words) {
   return words.reduce(function (concatedStr, word) {
@@ -140,6 +142,9 @@ const concatenateNames = function (names) {
 
 // countVowelsInWords(["hello", "world"]) => "eoo"
 const countVowelsInWords = function (words) {
+  return words.reduce(function (str, element) {
+    return str + [...element].filter(char => 'aeiou'.includes(char)).join('');
+  }, '');
 
 };
 
@@ -157,6 +162,8 @@ const reverseString = function (words) {
   return concatenateNames(reversedStrings);
 };
 
+// ---------* 20 programs till now *-----------------------
+
 // duplicateNumbers([1, 2, 3]) => [1, 1, 2, 2, 3, 3]
 const duplicateNumbers = function (numbers) {
   return numbers.reduce(function (duplicatedArr, element) {
@@ -168,19 +175,44 @@ const duplicateNumbers = function (numbers) {
 
 // concatenateArrays([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
 const concatenateArrays = function (arrays) {
+  return arrays.reduce(function (concatedArr, element) {
+    concatedArr.push(...element);
+    return concatedArr;
+  }, []);
+
 };
 
 // flattenArray([[1, 2], [3, 4], [5, 6]]) => [1, 2, 3, 4, 5, 6]
-const flattenArray = function (arrays) { };
+const flattenArray = function (arrays) {
+  return arrays.flatMap(element => [...element]);
+};
 
 // uniqueNumbers([1, 2, 2, 3, 4, 4, 5]) => [1, 2, 3, 4, 5]
-const uniqueNumbers = function (numbers) { };
+const uniqueNumbers = function (numbers) {
+  return numbers.reduce(function (uniqueArr, element) {
+    if (!uniqueArr.includes(element)) {
+      uniqueArr.push(element);
+    };
+
+    return uniqueArr;
+  }, []);
+};
 
 // groupByLength(["apple", "banana", "cherry", "date"]) => { 5: ["apple", "cherry"], 6: ["banana"], 4: ["date"] }
 const groupByLength = function (strings) { };
 
 // countOccurrences(["apple", "banana", "cherry", "banana"]) => { apple: 1, banana: 2, cherry: 1 }
-const countOccurrences = function (strings) { };
+
+const countOccurrences = function (strings) {
+  return strings.reduce(function (object, element) {
+    const count = strings.filter(word => word === element).length;
+    object[element] = count;
+    return object;
+  }, {});
+
+};
+
+console.log(countOccurrences(["apple", "banana", "cherry", "banana"]));
 
 // mergeObjects([{ a: 1, b: 2 }, { b: 3, c: 4 }, { a: 5 }]) => { a: 6, b: 5, c: 4 }
 const mergeObjects = function (objects) { };
@@ -193,6 +225,8 @@ const makeObject = function (keys, values) { };
 
 // invertObject({ "a": 1, "b": 2, "c": 3 }) => { 1: "a", 2: "b", 3: "c" }
 const invertObject = function (obj) { };
+
+// ----------------* 30 programs till now *-------------------------
 
 // mergeArrays([["a", 1], ["b", 2]], [["c", 3], ["d", 4]]) => { "a": 1, "b": 2, "c": 3, "d": 4 }
 const mergeArrays = function (arr1, arr2) { };

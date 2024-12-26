@@ -73,6 +73,7 @@ const domainNamesOf = function (emails) {
     return element.slice(start, element.length);
   });
 };
+//-------------------* 10 programs till now *------------------------
 
 // split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
 const splitWordsOf = function (strings) {
@@ -143,6 +144,8 @@ const reversedWordsOf = function (strings) {
   });
 };
 
+// ----------------* 20 programs till now *------------------------------
+
 // extract unique characters from ["apple", "banana", "grape"] => ["apl", "ban", "gra"]
 // Maintain the order of their first appearance in each string
 const uniqueCharactersOf = function (strings) { };
@@ -161,7 +164,9 @@ const wordLengthsOf = function (strings) {
 };
 
 // flatten nested arrays of [[1, [2, 3]], [4, [5, 6]]] => [[1, 2, 3], [4, 5, 6]]
-const flattenedArraysOf = function (arrays) { };
+const flattenedArraysOf = function (arrays) {
+  return arrays.map(element => element.flatMap(numbers => numbers));
+};
 
 // sort letters in ["cat", "bat", "rat"] alphabetically => ["act", "abt", "art"]
 const sortedLettersOf = function (strings) {
@@ -187,6 +192,8 @@ const extractAges = function (objects) {
 const firstLettersOfNames = function (objects) {
   return objects.map(object => object.name[0]);
 };
+
+//----------* 30 peograms till now *----------------------
 
 // calculate areas from [{ width: 2, height: 3 }, { width: 4, height: 5 }] => [6, 20]
 const calculateAreas = function (rectangles) {
@@ -249,20 +256,33 @@ const splitFullNames = function (objects) {
 };
 
 // normalize scores so they fall between 0 and 1 based on the max score from [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }] => [0.8, 1]
-const normalizeScores = function (objects) { };
+const normalizeScores = function (objects) {
+
+};
 
 // calculate percentage contribution of each number in [10, 20, 30] (relative to the total sum) => [16.67, 33.33, 50]
 const percentageContributions = function (numbers) { };
 
 // subtract the smallest number from each number in [3, 8, 1] => [2, 7, 0]
-const subtractMin = function (numbers) { };
+const subtractMin = function (numbers) {
+  const minimunNumber = Math.min(...numbers);
+
+  return numbers.map(number => number - minimunNumber);
+};
 
 // calculate ranks (1-based, descending) for scores in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [2, 1, 3]
-const calculateRanks = function (objects) { };
+const calculateRanks = function (objects) {
+
+};
 
 // normalize strings by the longest string length in ["cat", "elephant", "dog"] => ["cat    ", "elephant", "dog    "]
 // (pad with spaces to match the longest length)
-const normalizeStringLengths = function (strings) { };
+const normalizeStringLengths = function (strings) {
+  const lengths = strings.map(string => string.length);
+
+
+  return strings.map(string => string.padEnd(Math.max(...lengths)));
+};
 
 // normalize strings by centering them based on the longest string length in ["cat", "elephant", "dog"] => ["  cat   ", "elephant", "  dog   "]
 // (pad with spaces to justify to the center)
@@ -425,7 +445,11 @@ const divide = function (bases, divisors) { };
 
 // given two arrays, one of numbers and one of exponents, create closures to raise the base number to the exponent, then use flatMap to raise each number by each exponent
 // [2, 3], [2, 3] => [4, 8, 9, 27]
-const power = function (bases, exponents) { };
+const power = function (bases, exponents) {
+  return bases.flatMap(function (base) {
+    return exponents.map(exponent => Math.pow(base, exponent));
+  });
+};
 
 // given two arrays, one of prices and one of discounts, create closures to apply the discount to the price, then use flatMap to apply each discount to each price
 // [100, 200], [0.1, 0.2] => [90, 180, 160, 240]
@@ -433,7 +457,9 @@ const applyDiscount = function (prices, discounts) { };
 
 // given two arrays, one of names and one of titles, create closures that combine each name with each title, then use flatMap to generate all combinations of names and titles
 // ["Alice", "Bob"], ["Developer", "Manager"] => ["Alice Developer", "Alice Manager", "Bob Developer", "Bob Manager"]
-const combineNameAndTitle = function (names, titles) { };
+const combineNameAndTitle = function (names, titles) {
+
+};
 
 // given two arrays, one of numbers and one of multipliers, create closures that multiply the base number by the corresponding multiplier at the same index, then return the results
 // [1, 2, 3], [2, 3, 4] => [2, 6, 12]
