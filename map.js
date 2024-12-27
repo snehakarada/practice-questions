@@ -1,4 +1,4 @@
-// squares of [1, 2, 3] => [1, 4, 9]
+// squares of [1, 2, 3] => [1, 4, 9] 39
 const squaresOf = function (numbers) {
   return numbers.map(function (element) {
     return element * element;
@@ -292,13 +292,25 @@ const centerJustifyStrings = function (strings) { };
 const scaleToMax100 = function (numbers) { };
 
 // map each number to the difference between it and the average of the array in [10, 20, 30] => [-10, 0, 10]
-const differencesFromMean = function (numbers) { };
+const differencesFromMean = function (numbers) {
+  const average = numbers.reduce(((sum, number) => sum + number), 0) / numbers.length;
+
+  return numbers.map(number => number - average);
+};
 
 // map each string to its frequency in ["apple", "banana", "apple", "apple", "banana"] => [3, 2, 3, 3, 2]
-const stringFrequencies = function (strings) { };
+const stringFrequencies = function (strings) {
+  return strings.map(function (word) {
+    return strings.reduce(((count, element) => element === word ? count + 1 : count), 0);
+  });
+};
 
 // mark the largest number in an array as true, others as false in [1, 3, 2] => [false, true, false]
-const markLargestNumber = function (numbers) { };
+const markLargestNumber = function (numbers) {
+  const max = Math.max(...numbers);
+
+  return numbers.map(number => number === max);
+};
 
 // normalize scores based on a curve: first find the max score, then subtract the mean, and scale the results to a range of 0-100 in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [60, 100, 80]
 // Steps: Find max score, calculate mean, normalize each score.
@@ -306,11 +318,14 @@ const normalizeWithCurve = function (objects) { };
 
 // group students by their grades: first categorize them into A, B, C, and so on, then map each student to their respective category in [{ name: "Alice", grade: 85 }, { name: "Bob", grade: 92 }] => [['Alice', 'B'], ['Bob', 'A']]
 // Steps: Categorize grades, then group students by category.
-const groupByGrade = function (objects) { };
+const groupByGrade = function (objects) {
+
+};
 
 // sort strings by length first, and then alphabetically if lengths are equal in ["cat", "banana", "apple", "kiwi"] => ["cat", "kiwi", "apple", "banana"]
 // Steps: Sort by length, then by lexicographical order.
-const sortByLengthAndAlphabet = function (strings) { };
+const sortByLengthAndAlphabet = function (strings) {
+};
 
 // find the difference between the max and min values, and then normalize the array based on this range in [10, 20, 30, 5] => [0.25, 0.75, 1, 0]
 // Steps: Find min, max, calculate range, then normalize each value.

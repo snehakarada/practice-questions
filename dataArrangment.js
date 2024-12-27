@@ -1,94 +1,98 @@
-const data = [
-  {
-    name: 'Rahul',
-    age: 40,
-    city: 'pune',
-    study: 'computer science',
-    employed: true,
-    profession: 'software engineer',
-    hobbies: [{
-      hobby: 'playing',
-      classification: 'chess'
-    },
+const getData = () => {
+  const data = [
     {
-      hobby: 'gardening',
-      classification: ''
-    }],
-    pets: [{
-      type: 'dog', name: 'max', age: 4, isItVaccinated: true,
-      isItFullyVaccinated: true, activities: ['playing fetch in the park']
-    }],
-    vechile: ['car']
-  },
-
-  {
-    name: 'Ananya',
-    age: 30,
-    city: 'Bangalore',
-    study: 'computer science',
-    employed: false,
-    profession: '',
-    hobbies: [
-      {
-        hobby: 'cooking',
-        classification: 'Italian recipes'
-      }
-    ],
-    pets: [{
-      type: 'parrot', name: 'kiwi', age: 1, isItVaccinated: true,
-      isItFullyVaccinated: false, activities: ['mimics voice']
-    }],
-    vechile: []
-  },
-
-  {
-    name: 'Ramesh',
-    age: 45,
-    city: 'jaipur',
-    study: '',
-    employed: false,
-    profession: 'business owner',
-    hobbies: [{
-      hobby: 'gardening',
-      classification: 'rose gardening'
-    },
-    {
-      hobby: 'readingBooks',
-      classification: 'historical fiction'
-    }],
-    pets: [
-      {
-        type: 'cat', name: 'bella', age: 3, isItVaccinated: true, isItFullyVaccinated: true, activities: ['lounging in the sun']
+      name: 'Rahul',
+      age: 40,
+      city: 'pune',
+      study: 'computer science',
+      employed: true,
+      profession: 'software engineer',
+      hobbies: [{
+        hobby: 'playing',
+        classification: 'chess'
       },
-
       {
-        type: 'cat', name: 'leo', age: 3, isItVaccinated: true, isItFullyVaccinated: true, activities: ['lounging in the sun']
+        hobby: 'gardening',
+        classification: ''
       }],
-
-    vechile: []
-  },
-
-  {
-    name: 'kavya',
-    age: 28,
-    city: 'chennai',
-    study: '',
-    employed: false,
-    hobbies: [{
-      hobby: 'watching shows',
-      classification: 'binge-watching sci-fi shows'
+      pets: [{
+        type: 'dog', name: 'max', age: 4, isItVaccinated: true,
+        isItFullyVaccinated: true, activities: ['playing fetch in the park']
+      }],
+      vechile: ['car']
     },
+
     {
-      hobby: 'readingBooks',
-      classification: 'prefers modern fantasy novels'
-    }],
-    profession: 'dancer',
-    pets: [{
-      type: 'rabbit', name: 'snowy', age: 2, isItVaccinated: true, isItFullyVaccinated: false, activities: ['nibbling on carrots']
-    }],
-    vechile: ['bike']
-  }
-];
+      name: 'Ananya',
+      age: 30,
+      city: 'Bangalore',
+      study: 'computer science',
+      employed: false,
+      profession: '',
+      hobbies: [
+        {
+          hobby: 'cooking',
+          classification: 'Italian recipes'
+        }
+      ],
+      pets: [{
+        type: 'parrot', name: 'kiwi', age: 1, isItVaccinated: true,
+        isItFullyVaccinated: false, activities: ['mimics voice']
+      }],
+      vechile: []
+    },
+
+    {
+      name: 'Ramesh',
+      age: 45,
+      city: 'jaipur',
+      study: '',
+      employed: false,
+      profession: 'business owner',
+      hobbies: [{
+        hobby: 'gardening',
+        classification: 'rose gardening'
+      },
+      {
+        hobby: 'readingBooks',
+        classification: 'historical fiction'
+      }],
+      pets: [
+        {
+          type: 'cat', name: 'bella', age: 3, isItVaccinated: true, isItFullyVaccinated: true, activities: ['lounging in the sun']
+        },
+
+        {
+          type: 'cat', name: 'leo', age: 3, isItVaccinated: true, isItFullyVaccinated: true, activities: ['lounging in the sun']
+        }],
+
+      vechile: []
+    },
+
+    {
+      name: 'kavya',
+      age: 28,
+      city: 'chennai',
+      study: '',
+      employed: false,
+      hobbies: [{
+        hobby: 'watching shows',
+        classification: 'binge-watching sci-fi shows'
+      },
+      {
+        hobby: 'readingBooks',
+        classification: 'prefers modern fantasy novels'
+      }],
+      profession: 'dancer',
+      pets: [{
+        type: 'rabbit', name: 'snowy', age: 2, isItVaccinated: true, isItFullyVaccinated: false, activities: ['nibbling on carrots']
+      }],
+      vechile: ['bike']
+    }
+  ];
+
+  return data;
+};
 
 //------------* How many individuals are currently employed? *----------------
 
@@ -303,7 +307,7 @@ const printQuestionAndAnswers = function ([[question, answer]], data) {
 
 const testAll = function (questionsAndAnswers) {
   return questionsAndAnswers.map(function (question) {
-    printQuestionAndAnswers(Object.entries(question), data);
+    printQuestionAndAnswers(Object.entries(question), getData());
   });
 };
 

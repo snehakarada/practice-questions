@@ -1,4 +1,4 @@
-// even numbers [1, 2, 3, 4, 5] => [2, 4]
+// even numbers [1, 2, 3, 4, 5] => [2, 4] 26
 const filterEvenNumbers = function (numbers) {
   return numbers.filter(function (element) {
     return element % 2 === 0;
@@ -220,17 +220,19 @@ const filterByPostCount = function (users, postCount) {
 
 // Apply a discount to each item's price, then filter for items under a certain price [{name: "item1", price: 100}, {name: "item2", price: 50}] => [{name: "item2", price: 45}]
 const filterDiscountedItems = function (items, discount, maxPrice) {
-  const priceAfterDiscount = items.map(({ name, price }) => (price - (price * discount / 100)));
-  console.log(priceAfterDiscount);
+
+};
+// Convert product names to uppercase, then filter for products with names longer than a certain number [{name: "apple"}, {name: "banana"}] => [{name: "APPLE"}]
+const filterLongProductNames = function (products, minLength) {
+  const result = products.filter(({ name }) => name.length > minLength);
+  // console.log(result.map(({ name }) => ({ name.toUpperCase() })));
+  // console.log(result);
 };
 
-console.log(filterDiscountedItems([{ name: "item1", price: 100 }, { name: "item2", price: 50 }], 5, 20));
-
-// Convert product names to uppercase, then filter for products with names longer than a certain number [{name: "apple"}, {name: "banana"}] => [{name: "APPLE"}]
-const filterLongProductNames = function (products, minLength) { };
-
 // Group users by their age, then filter for specific age groups [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
-const filterAgeGroups = function (users, ageGroup) { };
+const filterAgeGroups = function (users, ageGroup) {
+
+};
 
 // Convert grades to letter grades, then filter for students who passed [{name: "Alice", grade: 90}, {name: "Bob", grade: 55}] => [{name: "Alice", grade: 90}]
 const filterPassingGrades = function (students, passingGrade) { };
@@ -239,16 +241,22 @@ const filterPassingGrades = function (students, passingGrade) { };
 const filterHighPriceWithVAT = function (products, vatRate, threshold) { };
 
 // Calculate the length of each name, then filter for names longer than a given number [{name: "Alice"}, {name: "Bob"}] => [{name: "Alice"}]
-const filterLongNames = function (people, minLength) { };
+const filterLongNames = function (people, minLength) {
+  return people.filter(({ name }) => name.length > minLength);
+};
 
 // Normalize scores to a standard range, then filter for students who passed [{name: "John", score: 50}, {name: "Jane", score: 80}] => [{name: "Jane", score: 80}]
 const filterNormalizedScores = function (students, minScore) { };
 
 // Convert book publication dates, then filter for books published after a given year [{title: "Book1", year: 2020}, {title: "Book2", year: 2022}] => [{title: "Book2", year: 2022}]
-const filterRecentBooks = function (books, yearThreshold) { };
+const filterRecentBooks = function (books, yearThreshold) {
+  return books.filter(({ year }) => year > yearThreshold);
+};
 
 // Count the number of posts for each user, then filter for users with more than a specific number of posts [{username: "Alice", posts: 100}, {username: "Bob", posts: 50}] => [{username: "Alice", posts: 100}]
-const filterActivePosters = function (users, postThreshold) { };
+const filterActivePosters = function (users, postThreshold) {
+  return users.filter(({ posts }) => posts > postThreshold);
+};
 
 // Convert students' grades to letter grades, then filter for students who received a specific grade [{name: "Alice", grade: 90}, {name: "Bob", grade: 85}] => [{name: "Alice", grade: 90}]
 const filterSpecificGrade = function (students, grade) { };
@@ -471,4 +479,6 @@ const findInStockItems = function (items, lookup) { };
 // Find animals whose habitat matches the required type from the lookup object.
 // Input: ["Lion", "Elephant", "Shark"], { "Lion": { habitat: "Jungle" }, "Elephant": { habitat: "Jungle" }, "Shark": { habitat: "Ocean" } } , "Jungle"
 // Output: ["Lion", "Elephant"]
-const findAnimalsByHabitat = function (animals, lookup) { };
+const findAnimalsByHabitat = function (animals, lookup) {
+
+};
