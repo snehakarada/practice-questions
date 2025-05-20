@@ -1,5 +1,5 @@
 // squares of [1, 2, 3] => [1, 4, 9] 39
-const squaresOf = function (numbers) {
+export const squaresOf = function (numbers) {
   return numbers.map(function (element) {
     return element * element;
   });
